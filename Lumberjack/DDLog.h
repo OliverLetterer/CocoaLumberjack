@@ -62,10 +62,10 @@
 **/
 
 #define LOG_OBJC_MACRO(async, lvl, flg, ctx, frmt, ...) \
-             LOG_MACRO(async, lvl, flg, ctx, nil, sel_getName(_cmd), frmt, ##__VA_ARGS__)
+             LOG_MACRO(async, lvl, flg, ctx, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 
 #define LOG_C_MACRO(async, lvl, flg, ctx, frmt, ...) \
-          LOG_MACRO(async, lvl, flg, ctx, nil, __FUNCTION__, frmt, ##__VA_ARGS__)
+          LOG_MACRO(async, lvl, flg, ctx, nil, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 
 #define  SYNC_LOG_OBJC_MACRO(lvl, flg, ctx, frmt, ...) \
               LOG_OBJC_MACRO( NO, lvl, flg, ctx, frmt, ##__VA_ARGS__)
@@ -101,10 +101,10 @@
   do { if(lvl & flg) LOG_MACRO(async, lvl, flg, ctx, nil, fnct, frmt, ##__VA_ARGS__); } while(0)
 
 #define LOG_OBJC_MAYBE(async, lvl, flg, ctx, frmt, ...) \
-             LOG_MAYBE(async, lvl, flg, ctx, sel_getName(_cmd), frmt, ##__VA_ARGS__)
+             LOG_MAYBE(async, lvl, flg, ctx, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 
 #define LOG_C_MAYBE(async, lvl, flg, ctx, frmt, ...) \
-          LOG_MAYBE(async, lvl, flg, ctx, __FUNCTION__, frmt, ##__VA_ARGS__)
+          LOG_MAYBE(async, lvl, flg, ctx, __PRETTY_FUNCTION__, frmt, ##__VA_ARGS__)
 
 #define  SYNC_LOG_OBJC_MAYBE(lvl, flg, ctx, frmt, ...) \
               LOG_OBJC_MAYBE( NO, lvl, flg, ctx, frmt, ##__VA_ARGS__)
